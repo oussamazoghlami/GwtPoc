@@ -1,0 +1,2 @@
+serviceClass: com.sfeir.tutorials.client.service.AuthenticationService
+path: 4BD42551DAC8041CF85BA9F93C438E31.gwt.rpc

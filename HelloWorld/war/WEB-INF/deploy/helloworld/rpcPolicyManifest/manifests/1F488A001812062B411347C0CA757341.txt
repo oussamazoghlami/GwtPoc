@@ -1,0 +1,2 @@
+serviceClass: com.sfeir.tutorials.client.GreetingService
+path: A9FED9BF274D05A99830DEB4C2C138BE.gwt.rpc

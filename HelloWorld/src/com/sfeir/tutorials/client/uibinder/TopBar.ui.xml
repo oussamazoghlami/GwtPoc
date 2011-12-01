@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+	<div data-scrollspy="scrollspy" class="topbar">
+      <div class="topbar-inner">
+        <div class="container">
+          <a href="#" class="brand">Sfeir SA</a>
+          <ul class="nav">
+            <li onclick="doclick(this);"><a href="#maps"><g:Label>Maps</g:Label></a></li>
+            <li onclick="doclick(this);"><a href="#grid" ><g:Label>Grid</g:Label></a></li>
+            <li onclick="doclick(this);"><a href="#grid-system">Nous Rejoindre</a></li>
+            <li onclick="doclick(this);"><a href="#layouts">Formations</a></li>
+            <li onclick="doclick(this);"><a href="#typography">Actualités</a></li>
+            <li onclick="doclick(this);"><a href="#media">Références</a></li>
+            <li onclick="doclick(this);"><a href="#tables">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	</g:HTMLPanel>
+</ui:UiBinder> 
