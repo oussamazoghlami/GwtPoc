@@ -19,7 +19,6 @@ public class HelloWorld implements EntryPoint {
 		HandlerManager eventBus = new HandlerManager(null);
 		AppController appController = new AppController(eventBus);
 		appController.go(RootPanel.get("helloWorld"));
-		// RootPanel.get("helloWorld").add(new UserPointPage(eventBus));
 	}
 
 }
