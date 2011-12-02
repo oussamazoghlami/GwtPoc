@@ -1,9 +1,5 @@
 package com.sfeir.tutorials.client.widget;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.maps.client.InfoWindowContent;
@@ -37,7 +33,6 @@ public class MapContainer extends Composite {
 
 	private MapWidget map;
 	private DockLayoutPanel layoutPanel = new DockLayoutPanel(Unit.PX);
-	private Map<String, List<LatLng>> userPointsMap = new HashMap<String, List<LatLng>>();
 	private HandlerManager eventBus;
 
 	/**
@@ -58,30 +53,12 @@ public class MapContainer extends Composite {
 	}
 
 	/**
-	 * This method will allow to set on the map, the points associated to the
-	 * authenticated user
-	 * 
-	 * @param username
-	 * @param password
-	 */
-	public void updateUserPoints(String username, String password) {
-		map.clearOverlays();
-		String id = username + ":" + password;
-		if (userPointsMap.containsKey(id)) {
-			List<LatLng> userLatLngs = userPointsMap.get(id);
-			for (LatLng latLng : userLatLngs) {
-				map.addOverlay(new Marker(latLng));
-			}
-		}
-	}
-
-	/**
 	 * Method to initialize our map
 	 */
 	private void initializeMap() {
 		// center the map around Paris
 		LatLng parisCity = LatLng.newInstance(48.856614, 2.3522219);
-		map = new MapWidget(parisCity, 6);
+		map = new MapWidget(parisCity, 5);
 		map.setSize("100%", "100%");
 		map.addControl(new LargeMapControl());
 		map.setCenter(parisCity);

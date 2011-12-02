@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:com.sfeir.tutorials.client.uibinder"
+	xmlns:w="urn:import:com.sfeir.tutorials.client.widget">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+		
+		.map {
+			width: 900px;
+		}
+	</ui:style>
+	
+	<g:HorizontalPanel>
+			<w:MapContainer ui:field="map" styleName="{style.map}"></w:MapContainer>
+			<m:MapPointInfo ui:field="mapPointInfo"></m:MapPointInfo>
+		</g:HorizontalPanel>
+</ui:UiBinder> 

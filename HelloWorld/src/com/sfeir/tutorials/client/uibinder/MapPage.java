@@ -2,7 +2,6 @@ package com.sfeir.tutorials.client.uibinder;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerManager;
-import com.google.gwt.maps.client.geom.LatLng;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -51,30 +50,6 @@ public class MapPage extends Composite implements Page {
 		login.setEventBus(eventBus);
 		map.setEventBus(eventBus);
 		mapPointInfo.setEventBus(eventBus);
-	}
-
-	/**
-	 * Method allowing to set the point associated to the authenticated user on
-	 * the map
-	 * 
-	 * @param login
-	 * @param password
-	 */
-	public void updateUserMapData(String login, String password) {
-		if (null != map) {
-			map.updateUserPoints(login, password);
-		}
-	}
-
-	/**
-	 * Method allowing to update the info of the selected point
-	 * 
-	 * @param latLng
-	 */
-	public void updateMapPointInfo(LatLng latLng) {
-		if (null != map) {
-			mapPointInfo.updateInfo(latLng);
-		}
 	}
 
 

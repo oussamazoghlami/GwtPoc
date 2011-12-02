@@ -6,13 +6,17 @@
 			font-weight: bold;
 		}
 		
+		.panel {
+			margin-top: 20px;
+		}
+		
 		.pager {
 			margin-left: 300px;
-			}
+		}
 	</ui:style>
 
-	<g:HTMLPanel>
-			<c:DataGrid ui:field="dataGrid"></c:DataGrid>
-			<c:SimplePager ui:field="pager" styleName="{style.pager}"></c:SimplePager>
+	<g:HTMLPanel styleName="{style.panel}">
+		<c:DataGrid ui:field="dataGrid"></c:DataGrid>
+		<c:SimplePager ui:field="pager" styleName="{style.pager}"></c:SimplePager>
 	</g:HTMLPanel>
 </ui:UiBinder> 

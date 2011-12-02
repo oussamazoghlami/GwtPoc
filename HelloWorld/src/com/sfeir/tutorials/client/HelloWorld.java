@@ -3,6 +3,7 @@ package com.sfeir.tutorials.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.sfeir.tutorials.client.uibinder.PrincipalePage;
 
 /**
  * Our Application entry point
@@ -17,8 +18,9 @@ public class HelloWorld implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		HandlerManager eventBus = new HandlerManager(null);
-		AppController appController = new AppController(eventBus);
-		appController.go(RootPanel.get("helloWorld"));
+		// AppController appController = new AppController(eventBus);
+		// appController.go(RootPanel.get("helloWorld"));
+		RootPanel.get("helloWorld").add(new PrincipalePage(eventBus));
 	}
 
 }

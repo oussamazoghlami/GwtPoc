@@ -99,7 +99,6 @@ public class Login extends Composite {
 					Session.isAuthenticatedUser = true;
 					Session.authenticatedUser = user;
 					showConnectedPart();
-					// TODO we can pass the user on the event
 					eventBus.fireEvent(new NewUserAuthenticatedEvent());
 				} else {
 					Window.alert("Verifiez vos coordonnées !");

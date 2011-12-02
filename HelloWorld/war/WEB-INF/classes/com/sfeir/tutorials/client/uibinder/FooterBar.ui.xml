@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<footer class="footer">
+	      <div class="container">
+	        <p class="pull-right"><a href="#">Back to top</a></p>
+	        <p>
+	          Conçu et réalisé à <a target="_blank" href="http://www.sfeir.com/">sfeir</a> by <a target="_blank" href="http://twitter.com/oussamazoghlami">@oussamazoghlami</a>. <br />
+	          Sfeir copyright 2011.  <a href="http://www.sfeir.com/">visit us</a>.
+	        </p>
+	      </div>
+	    </footer>
+	</g:HTMLPanel>
+</ui:UiBinder> 

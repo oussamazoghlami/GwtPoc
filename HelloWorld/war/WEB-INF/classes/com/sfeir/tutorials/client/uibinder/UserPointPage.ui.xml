@@ -1,0 +1,35 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:com.sfeir.tutorials.client.uibinder"
+	xmlns:w="urn:import:com.sfeir.tutorials.client.widget">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+		
+		.grid {
+			width: 900px;
+		}
+		
+		.body {
+			height: 520px;
+		}
+		
+		.footer {
+			height: 20px;
+		}
+	</ui:style>
+	<g:VerticalPanel>
+		<!-- header -->
+		<m:TopBar></m:TopBar>
+
+		<!-- body -->
+		<g:HorizontalPanel styleName="{style.body}">
+			<m:Login ui:field="login"></m:Login>
+			<m:UserPointGrid ui:field="userPointGrid" styleName="grid"></m:UserPointGrid>
+		</g:HorizontalPanel>
+
+		<!-- footer -->
+		<m:FooterBar styleName="{style.footer}"></m:FooterBar>
+	</g:VerticalPanel>
+</ui:UiBinder> 

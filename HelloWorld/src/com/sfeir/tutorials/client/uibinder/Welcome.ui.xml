@@ -1,0 +1,108 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+		
+		.welcome {
+			margin-top: 20px;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel styleName="{style.welcome}">
+		<section id="about">
+			<div class="page-header">
+				<h1>
+					Sfeir
+					<small>Une révolution en marche avec une nouvelle génération de
+						consultants</small>
+				</h1>
+			</div>
+			<div class="row">
+				
+				<div class="span-one-third">
+					<h3>Historique</h3>
+					
+					<p>
+					   	Créé en 1985, le Groupe Sfeir est spécialisé dans les services informatiques 
+					   	créateurs de valeur.
+					</p>
+					
+					<p>
+						Historiquement présent dans les métiers de la Finance et de l’Assistance à 
+						maîtrise d’ouvrage (AMOA), <a href="http://www.sfeir.com/decouvrir-sfeir/linnovation/">suite ...</a>.
+					</p>
+					
+					<img
+						alt="Logo Sfeir"
+						src="images/logo.gif"  class="logo" height="300px" style="padding-left:55px"/>
+					
+				</div>
+				
+				<div class="span-one-third">
+					<h3>L'innovation Sfeir</h3>
+					<p>L’innovation chez Sfeir c’est être la première SSII à utiliser
+						Google AppEngine,
+						avoir la première application française sur la market place Android,
+						mettre en
+						œuvre depuis plus de quatre ans le plus gros projet agile en France.
+					</p>
+					
+					<p>
+						Sfeir est accrédité CIR (Crédit Impôt Recherche) par le Ministère de 
+						l’Enseignement Supérieur et de la Recherche.
+					</p>
+				
+					<p>
+						Sfeir est accrédité CIR (Crédit Impôt Recherche) par le Ministère de 
+						l’Enseignement Supérieur et de la Recherche.
+					</p>
+					
+					<p>
+						Voir plus de détail sur:
+						<a href="http://www.sfeir.com/decouvrir-sfeir/linnovation/">sfeir.com ›</a>
+					</p>
+					<p>
+						<iframe scrolling="no" frameborder="0" allowtransparency="true"
+							src="http://platform.twitter.com/widgets/follow_button.html#_=1322829346351&amp;button=blue&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=sfeir"
+							class="twitter-follow-button" style="width: 300px; height: 20px;"
+							title=""></iframe>
+						<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+					</p>
+				</div>
+				<div class="span-one-third">
+					<h3>42ème Etage</h3>
+					<p>Cher Geek,
+						Peut-être avez-vous vu un ou plusieurs épisodes de notre Websérie
+						 “42ème étage” et vous avez voulu en savoir un peu plus sur notre Société ?
+					</p>
+					
+					<p>
+						Nous espérons que nous vous avons fait rire et que vous avez apprécié 
+						cette forme d’humour et d’autodérision décapante.
+					</p>
+					
+					<p>
+						En tous les cas, nous sommes conscients de la nécessité de faire évoluer 
+						les pratiques de notre métier. Au sein de Sfeir, nous avons fait le choix  
+						de redéfinir le cadre notre métier … et  de le  faire savoir !
+					</p>
+					
+					<p>
+						Vous êtes les bienvenus si vous souhaitez nous rejoindre, si vous partagez 
+						le même état d’esprit que nous, si vous avez envie de  redonner toute sa valeur 
+						au métier de consultant en France, créateur de valeur pour ses clients <a href="http://www.sfeir.com/webserie-42eme-etage/">suite ...</a>
+					</p>
+					
+					<img
+						alt="42 ème Etage"
+						src="images/42.png" />
+					
+				</div>
+			</div><!-- /row -->
+
+		</section>
+	</g:HTMLPanel>
+</ui:UiBinder> 

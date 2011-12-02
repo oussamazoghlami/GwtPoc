@@ -8,7 +8,7 @@
 		}
 		
 		.menu {
-			padding: 0px;
+			padding-top: 20px;
 			display: block;
 			color: #1783c4;
 			width: 250px;
@@ -127,78 +127,78 @@
 	</ui:style>
 
 	<g:HTMLPanel styleName="{style.menu}">
-	
-		<h2>
-			<g:InlineLabel ui:field="userLabel">Authentification</g:InlineLabel>
-		</h2>
+		<div class="sidebar">
+			<h2>
+				<g:InlineLabel ui:field="userLabel">Authentification</g:InlineLabel>
+			</h2>
 
-		<g:HTMLPanel ui:field="connected" visible="false">
-		
-			<div class="{style.pages}  {style.selected}">
-				Utilisateur authentifié
+			<g:HTMLPanel ui:field="connected" visible="false">
+
+				<div class="{style.pages}  {style.selected}">
+					Utilisateur authentifié
 			</div>
-			
-			<g:Label ui:field="userName" styleName="{style.mylabel}"></g:Label>
-			
-			<fieldset>
-				<label>
-				</label>
-				<g:Anchor ui:field="logoutButton" href="#"
-					styleName="{style.bouton} {style.bleu} {style.right}">
-					Se Déconnecter
+
+				<g:Label ui:field="userName" styleName="{style.mylabel}"></g:Label>
+
+				<fieldset>
+					<label>
+					</label>
+					<g:Anchor ui:field="logoutButton" href="#"
+						styleName="{style.bouton} {style.bleu} {style.right}">
+						Se Déconnecter
        			 </g:Anchor>
-			</fieldset>
+				</fieldset>
 
-		</g:HTMLPanel>
+			</g:HTMLPanel>
 
-		<g:HTMLPanel ui:field="notConnected">
+			<g:HTMLPanel ui:field="notConnected">
 
-			<div class="{style.pages}  {style.selected}">
-				Nom d'utilisateur
+				<div class="{style.pages}  {style.selected}">
+					Nom d'utilisateur
 			</div>
 
-			<g:TextBox ui:field="nameTextBox" styleName="{style.textbox}">
-				Entrez votre
-				nom
+				<g:TextBox ui:field="nameTextBox" styleName="{style.textbox}">
+					Entrez votre
+					nom
          </g:TextBox>
 
-			<div class="{style.pages} {style.selected}">
-				Mot de passe
+				<div class="{style.pages} {style.selected}">
+					Mot de passe
 		</div>
 
-			<g:TextBox ui:field="passwordTextBox" styleName="{style.textbox}">
-				Entrez
-				votre mot de passe
+				<g:TextBox ui:field="passwordTextBox" styleName="{style.textbox}">
+					Entrez
+					votre mot de passe
          </g:TextBox>
 
-			<fieldset>
-				<label>
-					<g:CheckBox ui:field="rememberMeCheckbox"></g:CheckBox>
-					<span>Se souvenir de moi</span>
-				</label>
-				<g:Anchor ui:field="loginButton" href="#"
-					styleName="{style.bouton} {style.vert} {style.right}">
-					Se logger
+				<fieldset>
+					<label>
+						<g:CheckBox ui:field="rememberMeCheckbox"></g:CheckBox>
+						<span>Se souvenir de moi</span>
+					</label>
+					<g:Anchor ui:field="loginButton" href="#"
+						styleName="{style.bouton} {style.vert} {style.right}">
+						Se logger
         </g:Anchor>
-			</fieldset>
+				</fieldset>
 
-			<div class="{style.pages}">
-				<a href="#" class="{style.element}">
-					<img src="module/images/homepage/1ptrans.gif" border="0"
-						class="{style.close}" />
-					Mot de passe oublié ?
-				</a>
-			</div>
+				<div class="{style.pages}">
+					<a href="#" class="{style.element}">
+						<img src="module/images/homepage/1ptrans.gif" border="0"
+							class="{style.close}" />
+						Mot de passe oublié ?
+					</a>
+				</div>
 
-			<div class="{style.pages}">
-				<a href="#" class="{style.element}">
-					<img src="module/images/homepage/1ptrans.gif" border="0"
-						class="{style.close}" />
-					Creer un nouveau compte ?
-				</a>
-			</div>
-			<br />
-		</g:HTMLPanel>
-
+				<div class="{style.pages}">
+					<a href="#" class="{style.element}">
+						<img src="module/images/homepage/1ptrans.gif" border="0"
+							class="{style.close}" />
+						Creer un nouveau compte ?
+					</a>
+				</div>
+				<br />
+			</g:HTMLPanel>
+		</div>
 	</g:HTMLPanel>
 </ui:UiBinder>

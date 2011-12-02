@@ -1,0 +1,153 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		* {
+			font-family: calibri;
+			font-size: 12px;
+		}
+		
+		.menu {
+			padding: 0px;
+			display: block;
+			color: #1783c4;
+			width: 250px;
+			height: 100%;
+			width: 17%;
+		}
+		
+		.menu h2 {
+			font-family: calibri;
+			font-size: 20px;
+			background: url('module/images/homepage/menutop.gif') no-repeat bottom
+				left;
+			width: 250px;
+			padding: 3px 7px 7px 7px;
+			margin: 0px;
+			text-align: center;
+		}
+		
+		.menu .close {
+			float: right;
+			margin: 4px;
+			margin-right: 7px;
+		}
+		
+		.textbox {
+			width: 245px;
+			border: 1px solid #dddddd;
+			padding: 3px 7px 7px 7px;
+			margin-top: 3px;
+			margin-bottom: 10px;
+		}
+		
+		.menu fieldset {
+			width: 250px;
+		}
+		
+		.pages {
+			padding: 3px 7px 7px 7px;
+			width: 250px;
+		}
+		
+		.pages.selected {
+			background: url('module/images/homepage/menubottom.gif') no-repeat
+				bottom left #f5f5f5;
+		}
+		
+		.pages .close {
+			float: right;
+		}
+		
+		.pages a.element {
+			color: black;
+			font-size: 13px;
+			font-weight: bold;
+			margin-bottom: 3px;
+			text-decoration: none;
+			display: block;
+		}
+		
+		.pages a.element:hover {
+			text-decoration: underline;
+			background: url('module/images/homepage/croixnoire.gif') 223px 3px
+				no-repeat;
+		}
+		
+		.pages .close {
+			float: right;
+			width: 13px;
+			height: 11px;
+		}
+		
+		.right {
+			float: right;
+		}
+		
+		a.bouton {
+			color: white;
+			font-size: 12px;
+			font-weight: bold;
+			text-transform: uppercase;
+			margin-right: 10px;
+			padding: 2px 5px;
+			text-decoration: none;
+			font-family: calibri;
+			border: 1px solid #909090;
+			text-align: center;
+			margin-top: 7px;
+		}
+		
+		a.bouton.bleu {
+			background: #0099cb;
+		}
+		
+		a.bouton.bleu:hover {
+			background: #0fb3e9;
+		}
+		
+		a.bouton.vert {
+			background: #4ba600;
+		}
+		
+		a.bouton.vert:hover {
+			background: #5cc803;
+		}
+		
+		.mylabel {
+			color: black;
+			font-size: 12px;
+			font-weight: bold;
+			margin-bottom: 3px;
+			text-decoration: none;
+			display: block;
+			padding: 3px 7px 7px 7px;
+		}
+		
+	</ui:style>
+
+	<g:HTMLPanel styleName="{style.menu}">
+
+		<h2>
+			<g:InlineLabel ui:field="userLabel">Map point info</g:InlineLabel>
+		</h2>
+
+		<div class="{style.pages}  {style.selected}">
+			Latitude
+		</div>
+
+		<g:Label ui:field="latitude" styleName="{style.mylabel}">
+			0.0
+		</g:Label>
+		
+		<div class="{style.pages}  {style.selected}">
+			Longitude
+		</div>
+
+		<g:Label ui:field="longitude" styleName="{style.mylabel}">
+			0.0
+		</g:Label>
+		
+
+	</g:HTMLPanel>
+</ui:UiBinder> 

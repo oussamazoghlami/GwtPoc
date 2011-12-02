@@ -12,9 +12,9 @@
         <div class="container">
           <a href="#" class="brand">Sfeir SA</a>
           <ul class="nav">
+          	<li onclick="doclick(this);"><a href="#welcome">Acceuil</a></li>
             <li onclick="doclick(this);"><a href="#maps"><g:Label>Maps</g:Label></a></li>
             <li onclick="doclick(this);"><a href="#grid" ><g:Label>Grid</g:Label></a></li>
-            <li onclick="doclick(this);"><a href="#grid-system">Nous Rejoindre</a></li>
             <li onclick="doclick(this);"><a href="#layouts">Formations</a></li>
             <li onclick="doclick(this);"><a href="#typography">Actualités</a></li>
             <li onclick="doclick(this);"><a href="#media">Références</a></li>
