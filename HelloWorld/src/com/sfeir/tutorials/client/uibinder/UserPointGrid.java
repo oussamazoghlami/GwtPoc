@@ -48,6 +48,23 @@ public class UserPointGrid extends Composite {
 	SimplePager pager;
 
 	public UserPointGrid() {
+		initDatagrid();
+		UserPointGridUiBinder uiBinder = GWT.create(UserPointGridUiBinder.class);
+		initWidget(uiBinder.createAndBindUi(this));
+	}
+	
+	public UserPointGrid(HandlerManager eventBus) {
+		initDatagrid();
+		UserPointGridUiBinder uiBinder = GWT.create(UserPointGridUiBinder.class);
+		initWidget(uiBinder.createAndBindUi(this));
+		this.eventBus = eventBus;
+		bindEventBus();
+	}
+
+	/**
+	 * 
+	 */
+	private void initDatagrid() {
 		dataGrid = new DataGrid<UserPoint>();
 		dataGrid.setWidth("800px");
 		dataGrid.setHeight("200px");
@@ -75,10 +92,6 @@ public class UserPointGrid extends Composite {
 		if (Session.isAuthenticatedUser) {
 			displayAuthenticatedUserPoints();
 		}
-
-		// Initialize the widget
-		UserPointGridUiBinder uiBinder = GWT.create(UserPointGridUiBinder.class);
-		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	/**

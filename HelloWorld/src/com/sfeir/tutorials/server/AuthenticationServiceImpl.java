@@ -20,4 +20,9 @@ public class AuthenticationServiceImpl extends RemoteServiceServlet implements A
 		return new UserDao().loadFullAuthenticatedUser(login, password);
 	}
 
+	@Override
+	public void addUser(User user) {
+		new UserDao().add(user);
+	}
+
 }

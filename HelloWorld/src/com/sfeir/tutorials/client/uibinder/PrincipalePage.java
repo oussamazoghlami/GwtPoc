@@ -64,13 +64,11 @@ public class PrincipalePage extends Composite implements ValueChangeHandler<Stri
 	 * This method allow to initialize the different page components
 	 */
 	private void initializePageComponents() {
-		login = new Login();
-		login.setEventBus(eventBus);
-		userPointGrid = new UserPointGrid();
-		userPointGrid.setEventBus(eventBus);
+		login = new Login(eventBus);
+		userPointGrid = new UserPointGrid(eventBus);
 		map = new Map(eventBus);
 		welcome = new Welcome();
-		inscription = new Inscription();
+		inscription = new Inscription(eventBus);
 	}
 
 	/**

@@ -17,6 +17,8 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.sfeir.tutorials.client.event.NewUserAuthenticatedEvent;
+import com.sfeir.tutorials.client.event.NewUserCreatedEvent;
+import com.sfeir.tutorials.client.event.NewUserCreatedEventHandler;
 import com.sfeir.tutorials.client.event.UserDisconnectedEvent;
 import com.sfeir.tutorials.client.service.AuthenticationService;
 import com.sfeir.tutorials.client.service.AuthenticationServiceAsync;
@@ -72,6 +74,19 @@ public class Login extends Composite {
 		}
 	}
 
+	/**
+	 * 
+	 * @param eventBus
+	 */
+	public Login(HandlerManager eventBus) {
+		initWidget(uiBinder.createAndBindUi(this));
+		if (Session.isAuthenticatedUser) {
+			showConnectedPart();
+		}
+		this.eventBus = eventBus;
+		bindEventBus();
+	}
+	
 	public void setUserName(String userName) {
 		userLabel.setText(userName);
 	}
@@ -96,14 +111,7 @@ public class Login extends Composite {
 
 			@Override
 			public void onSuccess(User user) {
-				if (null != user) {
-					Session.isAuthenticatedUser = true;
-					Session.authenticatedUser = user;
-					showConnectedPart();
-					eventBus.fireEvent(new NewUserAuthenticatedEvent());
-				} else {
-					Window.alert("Verifiez vos coordonnées !");
-				}
+				authenticateUser(user);
 
 			}
 
@@ -113,6 +121,35 @@ public class Login extends Composite {
 			}
 		});
 
+	}
+
+	/**
+	 * 
+	 */
+	private void bindEventBus() {
+		// listen to NewUserCreatedEvent
+		eventBus.addHandler(NewUserCreatedEvent.TYPE, new NewUserCreatedEventHandler() {
+
+			@Override
+			public void onNewUserCreated(NewUserCreatedEvent newUserCreatedEvent) {
+				authenticateUser(newUserCreatedEvent.getCreatedUser());
+			}
+		});
+	}
+	
+	/**
+	 * 
+	 * @param user
+	 */
+	private void authenticateUser(User user) {
+		if (null != user) {
+			Session.isAuthenticatedUser = true;
+			Session.authenticatedUser = user;
+			showConnectedPart();
+			eventBus.fireEvent(new NewUserAuthenticatedEvent());
+		} else {
+			Window.alert("Verifiez vos coordonnées !");
+		}
 	}
 
 	/**
@@ -129,6 +166,7 @@ public class Login extends Composite {
 
 	public void setEventBus(HandlerManager eventBus) {
 		this.eventBus = eventBus;
+		bindEventBus();
 	}
 
 	public HandlerManager getEventBus() {

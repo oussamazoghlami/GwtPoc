@@ -1,0 +1,160 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:d="urn:import:com.google.gwt.user.datepicker.client">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+		
+		.validation_error {
+			color: red;
+			}
+		
+		.nav_info {
+			background: url('module/images/homepage/menubottom.gif') no-repeat
+				bottom left #f5f5f5;
+			margin-top: 10px;
+			padding: 3px 27px 7px 7px;
+			width: 150px;
+			font-size: 15px;
+		}
+		
+		.nav_info.selected {
+			font-size: 17px;
+			font-weight: bold;
+		}
+		
+		.inscription_form {
+			margin-top: 20px;
+		}
+		
+		.right {
+			float: right;
+			padding-right: 100px;
+		}
+		
+		a.bouton {
+			color: white;
+			font-size: 12px;
+			font-weight: bold;
+			text-transform: uppercase;
+			margin-right: 10px;
+			padding: 2px 5px;
+			text-decoration: none;
+			font-family: calibri;
+			border: 1px solid #909090;
+			text-align: center;
+			margin-top: 7px;
+		}
+		
+		a.bouton.bleu {
+			background: #0099cb;
+		}
+		
+		a.bouton.bleu:hover {
+			background: #0fb3e9;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+
+		<!-- 
+		<table style="width:360px">
+			<tr>
+				<td>
+					<div class="{style.nav_info}  {style.selected}">
+						Info. Utilisateur
+					</div>
+				</td>
+
+				<td>
+					<div class="{style.nav_info}">
+						Points. Utilisateur
+					</div>
+				</td>
+
+				<td>
+					<div class="{style.nav_info}">
+						Finalisation
+					</div>
+				</td>
+			</tr>
+		</table>
+		 -->
+
+		<form style="margin-top:20px;width:600px">
+			<fieldset>
+				<legend>Formulaire d'inscription</legend>
+
+				<!-- Login Text Box -->
+				<div class="clearfix" ui:field="loginDiv">
+					<label for="xlInput">Login :</label>
+					<div class="input">
+						<g:TextBox ui:field="loginTextBox" />
+						<span class="help-inline" ui:field="loginLabel"></span>
+					</div>
+				</div>
+
+				<!-- Name Text Box -->
+				<div class="clearfix" ui:field="nameDiv">
+					<label for="xlInput">Nom :</label>
+					<div class="input">
+						<g:TextBox ui:field="nameTextBox" />
+						<span class="help-inline" ui:field="nameLabel"></span>
+					</div>
+				</div>
+
+				<!-- Surname Text Box -->
+				<div class="clearfix" ui:field="surnameDiv">
+					<label for="xlInput">Prénom :</label>
+					<div class="input">
+						<g:TextBox ui:field="surnameTextBox" />
+						<span class="help-inline" ui:field="surnameLabel"></span>
+					</div>
+				</div>
+
+				<!-- Email Text Box -->
+				<div class="clearfix" ui:field="emailDiv">
+					<label for="xlInput">Email :</label>
+					<div class="input">
+						<g:TextBox ui:field="emailTextBox" />
+						<span class="help-inline" ui:field="emailLabel"></span>
+					</div>
+				</div>
+				
+				<!-- Birthday Text Box -->
+				<div class="clearfix" ui:field="birthdayDiv">
+					<label for="xlInput">Date de naissance :</label>
+					<div class="input">
+						<d:DateBox ui:field="birthdayBox" />
+						<span class="help-inline" ui:field="birthdayLabel"></span>
+					</div>
+				</div>
+
+				<!-- Password Text Box -->
+				<div class="clearfix" ui:field="passwordDiv">
+					<label for="xlInput">Mot de passe :</label>
+					<div class="input">
+						<g:PasswordTextBox ui:field="passwordTextBox" />
+						<span class="help-inline" ui:field="passwordLabel"></span>
+					</div>
+				</div>
+
+				<!-- Repeat Password Text Box -->
+				<div class="clearfix" ui:field="repeatPasswordDiv">
+					<label for="xlInput">Répétez le Mot de passe :</label>
+					<div class="input">
+						<g:PasswordTextBox ui:field="repeatPasswordTextBox" />
+						<span class="help-inline" ui:field="repeatPasswordLabel"></span>
+					</div>
+				</div>
+				
+				<g:Anchor ui:field="inscriptionButton" href="#"
+						styleName="{style.bouton} {style.bleu} {style.right}">
+						Valider
+        		</g:Anchor>
+
+			</fieldset>
+		</form>
+	</g:HTMLPanel>
+</ui:UiBinder> 
