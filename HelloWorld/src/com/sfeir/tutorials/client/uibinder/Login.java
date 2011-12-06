@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.sfeir.tutorials.client.event.NewUserAuthenticatedEvent;
@@ -47,7 +48,7 @@ public class Login extends Composite {
 	TextBox nameTextBox;
 
 	@UiField
-	TextBox passwordTextBox;
+	PasswordTextBox passwordTextBox;
 
 	@UiField
 	HTMLPanel connected;

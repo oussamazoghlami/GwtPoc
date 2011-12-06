@@ -12,6 +12,12 @@
 	<!-- Google Maps module -->
 	<inherits name='com.google.gwt.maps.GoogleMaps' />
 	
+	<!-- Validation Library -->
+	<inherits name="eu.maydu.gwt.validation.ValidationLibrary"/>
+	
+	<!-- I18N Module -->
+	<inherits name="com.google.gwt.i18n.I18N"/>
+	
 	<inherits name='com.google.gwt.user.cellview.CellView' />
 
 	<!-- Inherit the default GWT style sheet. You can change -->

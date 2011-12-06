@@ -127,7 +127,7 @@
 	</ui:style>
 
 	<g:HTMLPanel styleName="{style.menu}">
-		<div class="sidebar">
+		<div class="well" style="width:260px">
 			<h2>
 				<g:InlineLabel ui:field="userLabel">Authentification</g:InlineLabel>
 			</h2>
@@ -146,7 +146,7 @@
 					<g:Anchor ui:field="logoutButton" href="#"
 						styleName="{style.bouton} {style.bleu} {style.right}">
 						Se Déconnecter
-       			 </g:Anchor>
+       			 	</g:Anchor>
 				</fieldset>
 
 			</g:HTMLPanel>
@@ -155,21 +155,22 @@
 
 				<div class="{style.pages}  {style.selected}">
 					Nom d'utilisateur
-			</div>
+				</div>
 
 				<g:TextBox ui:field="nameTextBox" styleName="{style.textbox}">
 					Entrez votre
 					nom
-         </g:TextBox>
+         		</g:TextBox>
 
 				<div class="{style.pages} {style.selected}">
 					Mot de passe
-		</div>
+				</div>
 
-				<g:TextBox ui:field="passwordTextBox" styleName="{style.textbox}">
+
+				<g:PasswordTextBox ui:field="passwordTextBox" styleName="{style.textbox}">
 					Entrez
 					votre mot de passe
-         </g:TextBox>
+         		</g:PasswordTextBox>
 
 				<fieldset>
 					<label>
@@ -179,21 +180,17 @@
 					<g:Anchor ui:field="loginButton" href="#"
 						styleName="{style.bouton} {style.vert} {style.right}">
 						Se logger
-        </g:Anchor>
+        			</g:Anchor>
 				</fieldset>
 
 				<div class="{style.pages}">
 					<a href="#" class="{style.element}">
-						<img src="module/images/homepage/1ptrans.gif" border="0"
-							class="{style.close}" />
 						Mot de passe oublié ?
 					</a>
 				</div>
 
 				<div class="{style.pages}">
-					<a href="#" class="{style.element}">
-						<img src="module/images/homepage/1ptrans.gif" border="0"
-							class="{style.close}" />
+					<a href="#inscription" class="{style.element}">
 						Creer un nouveau compte ?
 					</a>
 				</div>

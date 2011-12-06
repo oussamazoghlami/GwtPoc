@@ -1,6 +1,7 @@
 package com.sfeir.tutorials.shared;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,20 +19,35 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id private String login;
+	@Id
+	private String login;
 	private String password;
 	private String name;
 	private String surname;
-	@Transient private List<UserPoint> userPoints;
+	private String email;
+	private Date birthday;
+	@Transient
+	private List<UserPoint> userPoints;
 
 	public User() {
 	}
 
-	public User(String login, String password, String name, String surname) {
+	/**
+	 * 
+	 * @param login
+	 * @param password
+	 * @param name
+	 * @param surname
+	 * @param email
+	 * @param birthday
+	 */
+	public User(String login, String password, String name, String surname, String email, Date birthday) {
 		this.login = login;
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
+		this.email = email;
+		this.birthday = birthday;
 	}
 
 	public String getName() {
@@ -72,6 +88,22 @@ public class User implements Serializable {
 
 	public List<UserPoint> getUserPoints() {
 		return userPoints;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public Date getBirthday() {
+		return birthday;
 	}
 	
 	@Override

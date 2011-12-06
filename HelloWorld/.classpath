@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="C:/devtools/gwt-maps-1.1.1/gwt-maps.jar"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/gwt-2.4.0"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-3.1.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-vl-2.0b-without-hibernate.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
