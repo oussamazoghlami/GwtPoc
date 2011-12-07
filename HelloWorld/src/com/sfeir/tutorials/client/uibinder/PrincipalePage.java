@@ -82,39 +82,6 @@ public class PrincipalePage extends Composite implements ValueChangeHandler<Stri
 		}
 	}
 
-	/**
-	 * Method allowing to initialize the events to listen by the principal
-	 * Widget
-	 */
-	private void initializeEventBusListener() {
-		// listen to NewUserAuthenticatedEvent
-		eventBus.addHandler(NewUserAuthenticatedEvent.TYPE, new NewUserAuthenticatedEventHandler() {
-
-			@Override
-			public void onNewUserAuthenticated(NewUserAuthenticatedEvent newUserAuthenticatedEvent) {
-				History.newItem("maps");
-			}
-		});
-		
-		// listen to UserDisconnectedEvent
-		eventBus.addHandler(UserDisconnectedEvent.TYPE, new UserDisconnectedEventHandler() {
-
-			@Override
-			public void onUserDisconnected(UserDisconnectedEvent userDisconnectedEvent) {
-				History.newItem("welcome");
-			}
-
-		});
-	}
-
-	public void setEventBus(HandlerManager eventBus) {
-		this.eventBus = eventBus;
-	}
-
-	public HandlerManager getEventBus() {
-		return eventBus;
-	}
-
 	@Override
 	public void onValueChange(ValueChangeEvent<String> event) {
 		String token = event.getValue();
@@ -139,6 +106,39 @@ public class PrincipalePage extends Composite implements ValueChangeHandler<Stri
 				rightPart.add(inscription);
 			}
 		}
+	}
+	
+	/**
+	 * Method allowing to initialize the events to listen by the principal
+	 * Widget
+	 */
+	private void initializeEventBusListener() {
+		// listen to NewUserAuthenticatedEvent
+		eventBus.addHandler(NewUserAuthenticatedEvent.TYPE, new NewUserAuthenticatedEventHandler() {
+
+			@Override
+			public void onNewUserAuthenticated(NewUserAuthenticatedEvent newUserAuthenticatedEvent) {
+				History.newItem("maps");
+			}
+		});
+		
+		// listen to UserDisconnectedEvent
+		eventBus.addHandler(UserDisconnectedEvent.TYPE, new UserDisconnectedEventHandler() {
+
+			@Override
+			public void onUserDisconnected(UserDisconnectedEvent userDisconnectedEvent) {
+				History.newItem("welcome");
+			}
+
+		});
+	}
+	
+	public void setEventBus(HandlerManager eventBus) {
+		this.eventBus = eventBus;
+	}
+
+	public HandlerManager getEventBus() {
+		return eventBus;
 	}
 
 }
