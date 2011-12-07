@@ -37,6 +37,18 @@ public class UserPoint implements Serializable {
 		this.longitude = longitude;
 	}
 
+	/**
+	 * 
+	 * @param latitude
+	 * @param longitude
+	 * @param user
+	 */
+	public UserPoint(Double latitude, Double longitude, Key<User> user) {
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.user = user;
+	}
+
 	public Double getLatitude() {
 		return latitude;
 	}

@@ -38,7 +38,25 @@ public class Map extends Composite {
 	public Map(HandlerManager eventBus) {
 		initWidget(uiBinder.createAndBindUi(this));
 		map.setEventBus(eventBus);
+		map.setContainer(this);
 		mapPointInfo.setEventBus(eventBus);
+		mapPointInfo.setContainer(this);
+	}
+
+	public MapContainer getMap() {
+		return map;
+	}
+
+	public void setMap(MapContainer map) {
+		this.map = map;
+	}
+
+	public MapPointInfo getMapPointInfo() {
+		return mapPointInfo;
+	}
+
+	public void setMapPointInfo(MapPointInfo mapPointInfo) {
+		this.mapPointInfo = mapPointInfo;
 	}
 
 }

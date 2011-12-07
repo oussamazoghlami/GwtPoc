@@ -42,6 +42,14 @@ public class ObjectifyDao<T> extends DAOBase {
 		Key<T> key = ofy().put(entity);
 		return key;
 	}
+	
+	/**
+	 * 
+	 * @param entities
+	 */
+	public void add(List<T> entities) {
+		ofy().put(entities);
+	}
 
 	/**
 	 * 
@@ -49,6 +57,10 @@ public class ObjectifyDao<T> extends DAOBase {
 	 */
 	public void delete(T entity) {
 		ofy().delete(entity);
+	}
+	
+	public void delete(List<T> entities) {
+		ofy().delete(entities);
 	}
 
 	/**

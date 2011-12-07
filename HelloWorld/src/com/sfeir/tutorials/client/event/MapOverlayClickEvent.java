@@ -1,7 +1,7 @@
 package com.sfeir.tutorials.client.event;
 
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.maps.client.geom.LatLng;
+import com.google.gwt.maps.client.event.MapClickHandler.MapClickEvent;
 
 /**
  * Event indicating that a map point (overlay) was clicked
@@ -13,10 +13,10 @@ public class MapOverlayClickEvent extends GwtEvent<MapOverlayClickEventHandler> 
 
 	public static Type<MapOverlayClickEventHandler> TYPE = new Type<MapOverlayClickEventHandler>();
 
-	private final LatLng latLng;
+	private final MapClickEvent mapClickEvent;
 
-	public MapOverlayClickEvent(LatLng latLng) {
-		this.latLng = latLng;
+	public MapOverlayClickEvent(MapClickEvent mapClickEvent) {
+		this.mapClickEvent = mapClickEvent;
 	}
 
 	@Override
@@ -29,8 +29,8 @@ public class MapOverlayClickEvent extends GwtEvent<MapOverlayClickEventHandler> 
 		handler.onMapOverlayClick(this);
 	}
 
-	public LatLng getLatLng() {
-		return latLng;
+	public MapClickEvent getMapClickEvent() {
+		return mapClickEvent;
 	}
 
 }

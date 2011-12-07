@@ -158,8 +158,7 @@
 				</div>
 
 				<g:TextBox ui:field="nameTextBox" styleName="{style.textbox}">
-					Entrez votre
-					nom
+					Entrez votre nom
          		</g:TextBox>
 
 				<div class="{style.pages} {style.selected}">
@@ -168,8 +167,7 @@
 
 
 				<g:PasswordTextBox ui:field="passwordTextBox" styleName="{style.textbox}">
-					Entrez
-					votre mot de passe
+					Password
          		</g:PasswordTextBox>
 
 				<fieldset>

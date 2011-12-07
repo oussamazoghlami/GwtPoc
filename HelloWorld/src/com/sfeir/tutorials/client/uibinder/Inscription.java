@@ -20,6 +20,8 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.DateBox;
+import com.sfeir.tutorials.client.event.NewUserAuthenticatedEvent;
+import com.sfeir.tutorials.client.event.NewUserAuthenticatedEventHandler;
 import com.sfeir.tutorials.client.event.NewUserCreatedEvent;
 import com.sfeir.tutorials.client.service.AuthenticationService;
 import com.sfeir.tutorials.client.service.AuthenticationServiceAsync;
@@ -142,6 +144,7 @@ public class Inscription extends Composite {
 		DateTimeFormat dateFormat = DateTimeFormat.getFormat(PredefinedFormat.DATE_LONG);
 		birthdayBox.setFormat(new DateBox.DefaultFormat(dateFormat));
 		initValidator();
+		bindEventBus();
 	}
 
 	/**
@@ -177,6 +180,20 @@ public class Inscription extends Composite {
 		initFieldValidation(repeatPasswordTextBox, EQUAL_PASSWORDS_VALIDATOR, repeatPasswordDiv, repeatPasswordLabel,
 				"Les mots de passes ne sont pas identiques !");
 
+	}
+
+	/**
+	 * Initialize the event bus
+	 */
+	private void bindEventBus() {
+		// listen to NewUserAuthenticatedEvent
+		eventBus.addHandler(NewUserAuthenticatedEvent.TYPE, new NewUserAuthenticatedEventHandler() {
+
+			@Override
+			public void onNewUserAuthenticated(NewUserAuthenticatedEvent newUserAuthenticatedEvent) {
+				clearFields();
+			}
+		});
 	}
 
 	/**
@@ -231,11 +248,23 @@ public class Inscription extends Composite {
 	 */
 	private void clearFields() {
 		loginTextBox.setValue("");
+		loginDiv.setClassName(WELL_CLASSNAME);
+		loginLabel.setInnerHTML("");
 		nameTextBox.setValue("");
+		nameDiv.setClassName(WELL_CLASSNAME);
+		nameLabel.setInnerHTML("");
 		surnameTextBox.setValue("");
+		surnameDiv.setClassName(WELL_CLASSNAME);
+		surnameLabel.setInnerHTML("");
 		emailTextBox.setValue("");
+		emailDiv.setClassName(WELL_CLASSNAME);
+		emailLabel.setInnerHTML("");
 		passwordTextBox.setValue("");
+		passwordDiv.setClassName(WELL_CLASSNAME);
+		passwordLabel.setInnerHTML("");
 		repeatPasswordTextBox.setValue("");
+		repeatPasswordDiv.setClassName(WELL_CLASSNAME);
+		repeatPasswordLabel.setInnerHTML("");
 	}
 
 	public void setEventBus(HandlerManager eventBus) {

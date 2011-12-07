@@ -1,10 +1,15 @@
 package com.sfeir.tutorials.client.uibinder;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.maps.client.geom.LatLng;
+import com.google.gwt.maps.client.overlay.Overlay;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -25,13 +30,27 @@ public class MapPointInfo extends Composite {
 	interface MapPointInfoUiBinder extends UiBinder<Widget, MapPointInfo> {
 	}
 
+	private Map container;
 	private HandlerManager eventBus;
+	private Overlay overlayToDelete;
+	private LatLng latLngTodDelete;
 
 	@UiField
 	Label latitude;
 
 	@UiField
 	Label longitude;
+
+	@UiField
+	Anchor deleteButton;
+	
+	@UiField
+	Anchor validateButton;
+
+	public MapPointInfo() {
+		initWidget(uiBinder.createAndBindUi(this));
+		initDeleteButton();
+	}
 
 	/**
 	 * This method will accept a LatLng object and update the MapPointInfo
@@ -44,22 +63,51 @@ public class MapPointInfo extends Composite {
 		longitude.setText(latLng.getLongitude() + "");
 	}
 
-	public MapPointInfo() {
-		initWidget(uiBinder.createAndBindUi(this));
+	/**
+	 * Method allowing to clear the widget informations
+	 */
+	public void clearInfo() {
+		latitude.setText("0.0");
+		longitude.setText("0.0");
 	}
 	
+	@UiHandler("validateButton")
+	void onClick(ClickEvent e) {
+		container.getMap().validateUserPointUpdate();
+	}
+
+	/**
+	 * Initialize the delete button click handler;
+	 */
+	private void initDeleteButton() {
+		deleteButton.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				container.getMap().getMap().removeOverlay(overlayToDelete);
+				container.getMap().deleteUserPoint(latLngTodDelete.getLongitude(), latLngTodDelete.getLatitude());
+				clearInfo();
+				deleteButton.setVisible(false);
+			}
+		});
+
+	}
+
 	/**
 	 * Method allowing to initialize the eventBus
 	 */
 	private void bindEventBus() {
 		eventBus.addHandler(MapOverlayClickEvent.TYPE, new MapOverlayClickEventHandler() {
-			
+
 			@Override
-			public void onMapOverlayClick(MapOverlayClickEvent mapOverlayClickEvent) {
-				updateInfo(mapOverlayClickEvent.getLatLng());
+			public void onMapOverlayClick(final MapOverlayClickEvent mapOverlayClickEvent) {
+				updateInfo(mapOverlayClickEvent.getMapClickEvent().getOverlayLatLng());
+				overlayToDelete = mapOverlayClickEvent.getMapClickEvent().getOverlay();
+				latLngTodDelete = mapOverlayClickEvent.getMapClickEvent().getOverlayLatLng();
+				deleteButton.setVisible(true);
 			}
 		});
-		
+
 	}
 
 	public void setEventBus(HandlerManager eventBus) {
@@ -70,5 +118,13 @@ public class MapPointInfo extends Composite {
 	public HandlerManager getEventBus() {
 		return eventBus;
 	}
-	
+
+	public void setContainer(Map container) {
+		this.container = container;
+	}
+
+	public Map getContainer() {
+		return container;
+	}
+
 }

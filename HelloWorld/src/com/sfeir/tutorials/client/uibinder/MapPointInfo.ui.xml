@@ -123,7 +123,6 @@
 			display: block;
 			padding: 3px 7px 7px 7px;
 		}
-		
 	</ui:style>
 
 	<g:HTMLPanel styleName="{style.menu}">
@@ -139,7 +138,7 @@
 		<g:Label ui:field="latitude" styleName="{style.mylabel}">
 			0.0
 		</g:Label>
-		
+
 		<div class="{style.pages}  {style.selected}">
 			Longitude
 		</div>
@@ -147,7 +146,25 @@
 		<g:Label ui:field="longitude" styleName="{style.mylabel}">
 			0.0
 		</g:Label>
+
+		<fieldset>
+			<label>
+			</label>
+			<g:Anchor ui:field="deleteButton" href="#"
+				styleName="{style.bouton} {style.bleu} {style.right}" visible="false">
+				Supprimer
+       		</g:Anchor>
+		</fieldset>
 		
+		<fieldset>
+			<label>
+			</label>
+			<g:Anchor ui:field="validateButton" href="#"
+				styleName="{style.bouton} {style.bleu} {style.right}">
+				Valider
+       		</g:Anchor>
+		</fieldset>
+
 
 	</g:HTMLPanel>
 </ui:UiBinder> 

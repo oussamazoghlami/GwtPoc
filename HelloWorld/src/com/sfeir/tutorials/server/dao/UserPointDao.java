@@ -12,7 +12,7 @@ import com.sfeir.tutorials.shared.UserPoint;
 public class UserPointDao extends ObjectifyDao<UserPoint> {
 
 	static {
-		ObjectifyService.register(UserPoint.class);
+		//ObjectifyService.register(UserPoint.class);
 	}
 
 	public UserPointDao() {
