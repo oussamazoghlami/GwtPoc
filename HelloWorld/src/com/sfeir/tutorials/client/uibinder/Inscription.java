@@ -34,6 +34,7 @@ import eu.maydu.gwt.validation.client.validators.strings.StringLengthValidator;
 /**
  * This is the Inscription widget, allowing to subscribe a new user on the
  * system
+ * TODO thinking about adding the i18n
  * 
  * @author Oussama Zoghlami
  * 
@@ -221,11 +222,8 @@ public class Inscription extends Composite {
 					Window.alert("problem when adding the user");
 				}
 			});
-			// TODO Make an RPC call to add the user
-			// TODO in case of a successful inscription: authenticate the user
-			// to add his points
-			// TODO thinking about
 		}
+		// TODO: thinking about validating all the fields 
 	}
 
 	/**

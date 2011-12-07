@@ -1,6 +1,7 @@
 package com.sfeir.tutorials.shared;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class User implements Serializable {
 	private String email;
 	private Date birthday;
 	@Transient
-	private List<UserPoint> userPoints;
+	private List<UserPoint> userPoints = new ArrayList<UserPoint>();
 
 	public User() {
 	}

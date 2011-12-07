@@ -1,5 +1,8 @@
 package com.sfeir.tutorials.client.widget;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.maps.client.InfoWindowContent;
@@ -7,6 +10,7 @@ import com.google.gwt.maps.client.MapWidget;
 import com.google.gwt.maps.client.Maps;
 import com.google.gwt.maps.client.control.LargeMapControl;
 import com.google.gwt.maps.client.event.MapClickHandler;
+import com.google.gwt.maps.client.event.MapDoubleClickHandler;
 import com.google.gwt.maps.client.geom.LatLng;
 import com.google.gwt.maps.client.overlay.Marker;
 import com.google.gwt.maps.client.overlay.Overlay;
@@ -34,6 +38,7 @@ public class MapContainer extends Composite {
 	private MapWidget map;
 	private DockLayoutPanel layoutPanel = new DockLayoutPanel(Unit.PX);
 	private HandlerManager eventBus;
+	private List<UserPoint> authUserPoints = new ArrayList<UserPoint>();
 
 	/**
 	 * 
@@ -61,9 +66,11 @@ public class MapContainer extends Composite {
 		map = new MapWidget(parisCity, 5);
 		map.setSize("100%", "100%");
 		map.addControl(new LargeMapControl());
+		map.setDoubleClickZoom(false);
 		map.setCenter(parisCity);
 		map.getInfoWindow().open(map.getCenter(), new InfoWindowContent("Paris, capitale de France"));
 		addMapClickHandler();
+		addMapDoubleClickHandler();
 		layoutPanel.addNorth(map, 500);
 	}
 
@@ -86,6 +93,23 @@ public class MapContainer extends Composite {
 	}
 
 	/**
+	 * Add a map double click handler, to add a new map overlay (associated to a
+	 * new user point)
+	 */
+	private void addMapDoubleClickHandler() {
+		map.addMapDoubleClickHandler(new MapDoubleClickHandler() {
+
+			@Override
+			public void onDoubleClick(MapDoubleClickEvent event) {
+				map.addOverlay(new Marker(event.getLatLng()));
+				UserPoint userPoint = new UserPoint(event.getLatLng().getLatitude(), event.getLatLng().getLongitude());
+				authUserPoints.add(userPoint);
+			}
+
+		});
+	}
+
+	/**
 	 * Method allowing to initialize the event bus
 	 */
 	private void bindEventBus() {
@@ -95,6 +119,8 @@ public class MapContainer extends Composite {
 			@Override
 			public void onNewUserAuthenticated(NewUserAuthenticatedEvent newUserAuthenticatedEvent) {
 				displayUserMapPoints();
+				authUserPoints.clear();
+				authUserPoints.addAll(Session.authenticatedUser.getUserPoints());
 			}
 		});
 
