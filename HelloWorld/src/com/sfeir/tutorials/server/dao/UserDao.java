@@ -32,9 +32,8 @@ public class UserDao extends ObjectifyDao<User> {
 	 * @return
 	 */
 	public User loadFullAuthenticatedUser(String login, String password) {
-		List<User> users = listByProperty("login", login);
-		if (users.size() == 1) {
-			User user = users.get(0);
+		User user = getByProperty("login", login);
+		if (null != user) {
 			// Check the user password
 			if (user.getPassword().equals(password)) {
 				// Load the user points

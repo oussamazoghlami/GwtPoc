@@ -22,6 +22,8 @@ import com.sfeir.tutorials.client.event.NewUserAuthenticatedEvent;
 import com.sfeir.tutorials.client.event.NewUserAuthenticatedEventHandler;
 import com.sfeir.tutorials.client.event.UserDisconnectedEvent;
 import com.sfeir.tutorials.client.event.UserDisconnectedEventHandler;
+import com.sfeir.tutorials.client.event.UserPointModifiedEventHandler;
+import com.sfeir.tutorials.client.event.UserPointsModifiedEvent;
 import com.sfeir.tutorials.client.util.Session;
 import com.sfeir.tutorials.shared.User;
 import com.sfeir.tutorials.shared.UserPoint;
@@ -52,7 +54,11 @@ public class UserPointGrid extends Composite {
 		UserPointGridUiBinder uiBinder = GWT.create(UserPointGridUiBinder.class);
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-	
+
+	/**
+	 * 
+	 * @param eventBus
+	 */
 	public UserPointGrid(HandlerManager eventBus) {
 		initDatagrid();
 		UserPointGridUiBinder uiBinder = GWT.create(UserPointGridUiBinder.class);
@@ -159,6 +165,15 @@ public class UserPointGrid extends Composite {
 				clearPointGrid();
 			}
 
+		});
+		
+		// listen to UserDisconnectedEvent
+		eventBus.addHandler(UserPointsModifiedEvent.TYPE, new UserPointModifiedEventHandler() {
+			
+			@Override
+			public void onUserPointsModified(UserPointsModifiedEvent userPointsModifiedEvent) {
+				displayAuthenticatedUserPoints();
+			}
 		});
 	}
 

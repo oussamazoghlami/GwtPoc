@@ -7,21 +7,30 @@
 		}
 	</ui:style>
 	<g:HTMLPanel>
-	<div data-scrollspy="scrollspy" class="topbar">
-      <div class="topbar-inner">
-        <div class="container">
-          <a href="#" class="brand">Sfeir SA</a>
-          <ul class="nav">
-          	<li onclick="doclick(this);"><a href="#welcome">Acceuil</a></li>
-            <li onclick="doclick(this);"><a href="#maps"><g:Label>Maps</g:Label></a></li>
-            <li onclick="doclick(this);"><a href="#grid"><g:Label>Grid</g:Label></a></li>
-            <li onclick="doclick(this);"><a href="#layouts">Formations</a></li>
-            <li onclick="doclick(this);"><a href="#typography">Actualités</a></li>
-            <li onclick="doclick(this);"><a href="#media">Références</a></li>
-            <li onclick="doclick(this);"><a href="#tables">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+		<div data-dropdown="dropdown" class="topbar">
+	      <div class="topbar-inner">
+	        <div class="container">
+	          <h3><a href="#" class="brand">Sfeir SA</a></h3>
+	          <ul class="nav">
+	          	<li onclick="doclick(this);"><a href="#welcome">Acceuil</a></li>
+	            <li onclick="doclick(this);"><a href="#maps"><g:Label>Maps</g:Label></a></li>
+	            <li onclick="doclick(this);"><a href="#grid"><g:Label>Grid</g:Label></a></li>
+	            <li class="dropdown">
+	              <a class="dropdown-toggle" href="#">Administration</a>
+	              <ul class="dropdown-menu">
+	                <li><a href="#manageUsers">Gestion des utilisateurs</a></li>
+	                <li><a href="#manageAdmin">Gestion des Admin</a></li>
+	                <li class="divider"></li>
+	                <li><a href="#">Another link</a></li>
+	              </ul>
+	            </li>
+	            <li onclick="doclick(this);"><a href="#layouts">Formations</a></li>
+	            <li onclick="doclick(this);"><a href="#typography">Actualités</a></li>
+	            <li onclick="doclick(this);"><a href="#media">Références</a></li>
+	            <li onclick="doclick(this);"><a href="#tables">Contact</a></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </div>
 	</g:HTMLPanel>
 </ui:UiBinder> 

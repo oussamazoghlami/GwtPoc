@@ -35,8 +35,7 @@ import eu.maydu.gwt.validation.client.validators.strings.StringLengthValidator;
 
 /**
  * This is the Inscription widget, allowing to subscribe a new user on the
- * system
- * TODO thinking about adding the i18n
+ * system TODO thinking about adding the i18n
  * 
  * @author Oussama Zoghlami
  * 
@@ -130,7 +129,7 @@ public class Inscription extends Composite {
 
 	interface InscriptionUiBinder extends UiBinder<Widget, Inscription> {
 	}
-	
+
 	public Inscription() {
 		initWidget(uiBinder.createAndBindUi(this));
 		DateTimeFormat dateFormat = DateTimeFormat.getFormat(PredefinedFormat.DATE_LONG);
@@ -138,6 +137,10 @@ public class Inscription extends Composite {
 		initValidator();
 	}
 
+	/**
+	 * 
+	 * @param eventBus
+	 */
 	public Inscription(HandlerManager eventBus) {
 		initWidget(uiBinder.createAndBindUi(this));
 		this.eventBus = eventBus;
@@ -197,6 +200,8 @@ public class Inscription extends Composite {
 	}
 
 	/**
+	 * Method allowing to initialize the validator associated to a given form
+	 * field
 	 * 
 	 * @param textBox
 	 * @param ValidatorName
@@ -224,6 +229,7 @@ public class Inscription extends Composite {
 	@UiHandler("inscriptionButton")
 	void onClick(ClickEvent e) {
 		if (validator.validate()) {
+			// Make an RPC call to register the new user
 			final User newUser = new User(loginTextBox.getValue(), passwordTextBox.getValue(), nameTextBox.getValue(),
 					surnameTextBox.getValue(), emailTextBox.getValue(), birthdayBox.getValue());
 			authenticationService.addUser(newUser, new AsyncCallback<Void>() {
@@ -240,7 +246,7 @@ public class Inscription extends Composite {
 				}
 			});
 		}
-		// TODO: thinking about validating all the fields 
+		// TODO: thinking about validating all the fields
 	}
 
 	/**

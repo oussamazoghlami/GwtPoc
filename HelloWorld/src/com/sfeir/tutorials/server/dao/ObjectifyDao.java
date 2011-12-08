@@ -42,7 +42,7 @@ public class ObjectifyDao<T> extends DAOBase {
 		Key<T> key = ofy().put(entity);
 		return key;
 	}
-	
+
 	/**
 	 * 
 	 * @param entities
@@ -58,7 +58,7 @@ public class ObjectifyDao<T> extends DAOBase {
 	public void delete(T entity) {
 		ofy().delete(entity);
 	}
-	
+
 	public void delete(List<T> entities) {
 		ofy().delete(entities);
 	}
@@ -86,12 +86,40 @@ public class ObjectifyDao<T> extends DAOBase {
 	/**
 	 * @param propName
 	 * @param propValue
+	 * @return T
+	 */
+	public T getByProperty(String propName, Object propValue) {
+		Query<T> q = ofy().query(clazz);
+		q.filter(propName, propValue);
+		return q.get();
+	}
+
+	/**
+	 * @param propName
+	 * @param propValue
 	 * @return
 	 */
 	public List<T> listByProperty(String propName, Object propValue) {
 		Query<T> q = ofy().query(clazz);
 		q.filter(propName, propValue);
 		return q.list();
+	}
+
+	/**
+	 * Get by example
+	 * 
+	 * @param u
+	 * @param matchProperties
+	 * @return
+	 */
+	public T getByExample(T u, String... matchProperties) {
+		Query<T> q = ofy().query(clazz);
+		// Find non-null properties and add to query
+		for (String propName : matchProperties) {
+			Object propValue = getPropertyValue(u, propName);
+			q.filter(propName, propValue);
+		}
+		return q.get();
 	}
 
 	/**

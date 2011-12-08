@@ -126,5 +126,9 @@ public class MapPointInfo extends Composite {
 	public Map getContainer() {
 		return container;
 	}
-
+	
+	public Anchor getValidateButton() {
+		return validateButton;
+	}
+	
 }

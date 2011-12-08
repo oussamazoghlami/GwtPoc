@@ -126,7 +126,6 @@
 	</ui:style>
 
 	<g:HTMLPanel styleName="{style.menu}">
-
 		<h2>
 			<g:InlineLabel ui:field="userLabel">Map point info</g:InlineLabel>
 		</h2>
@@ -155,16 +154,15 @@
 				Supprimer
        		</g:Anchor>
 		</fieldset>
-		
+
 		<fieldset>
 			<label>
 			</label>
 			<g:Anchor ui:field="validateButton" href="#"
-				styleName="{style.bouton} {style.bleu} {style.right}">
+				styleName="{style.bouton} {style.bleu} {style.right}" visible="false">
 				Valider
        		</g:Anchor>
 		</fieldset>
-
 
 	</g:HTMLPanel>
 </ui:UiBinder> 

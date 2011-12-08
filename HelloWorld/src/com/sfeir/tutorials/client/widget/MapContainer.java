@@ -12,8 +12,12 @@ import com.google.gwt.maps.client.Maps;
 import com.google.gwt.maps.client.control.LargeMapControl;
 import com.google.gwt.maps.client.event.MapClickHandler;
 import com.google.gwt.maps.client.event.MapDoubleClickHandler;
+import com.google.gwt.maps.client.event.MarkerDragEndHandler;
+import com.google.gwt.maps.client.event.MarkerDragHandler;
+import com.google.gwt.maps.client.event.MarkerDragStartHandler;
 import com.google.gwt.maps.client.geom.LatLng;
 import com.google.gwt.maps.client.overlay.Marker;
+import com.google.gwt.maps.client.overlay.MarkerOptions;
 import com.google.gwt.maps.client.overlay.Overlay;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -24,6 +28,7 @@ import com.sfeir.tutorials.client.event.NewUserAuthenticatedEvent;
 import com.sfeir.tutorials.client.event.NewUserAuthenticatedEventHandler;
 import com.sfeir.tutorials.client.event.UserDisconnectedEvent;
 import com.sfeir.tutorials.client.event.UserDisconnectedEventHandler;
+import com.sfeir.tutorials.client.event.UserPointsModifiedEvent;
 import com.sfeir.tutorials.client.service.AuthenticationService;
 import com.sfeir.tutorials.client.service.AuthenticationServiceAsync;
 import com.sfeir.tutorials.client.uibinder.Map;
@@ -42,12 +47,13 @@ import com.sfeir.tutorials.shared.UserPoint;
 public class MapContainer extends Composite {
 
 	private final AuthenticationServiceAsync authenticationService = GWT.create(AuthenticationService.class);
-	
+
 	private Map container;
 	private MapWidget map;
 	private DockLayoutPanel layoutPanel = new DockLayoutPanel(Unit.PX);
 	private HandlerManager eventBus;
 	private List<UserPoint> authUserPoints = new ArrayList<UserPoint>();
+	private Marker draggedMarker;
 
 	/**
 	 * 
@@ -76,6 +82,7 @@ public class MapContainer extends Composite {
 	 */
 	public void addUserPoint(double longitude, double latitude) {
 		if (Session.isAuthenticatedUser) {
+			container.getMapPointInfo().getValidateButton().setVisible(true);
 			UserPoint userPoint = new UserPoint(latitude, longitude);
 			authUserPoints.add(userPoint);
 		}
@@ -90,10 +97,34 @@ public class MapContainer extends Composite {
 	 */
 	public void deleteUserPoint(double longitude, double latitude) {
 		if (Session.isAuthenticatedUser) {
+			container.getMapPointInfo().getValidateButton().setVisible(true);
 			for (UserPoint userPoint : authUserPoints) {
 				if ((userPoint.getLongitude().doubleValue() == longitude)
 						&& (userPoint.getLatitude().doubleValue() == latitude)) {
 					authUserPoints.remove(userPoint);
+					break;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Method allowing to update the user point when dragging an overlay on the
+	 * map
+	 * 
+	 * @param oldLong
+	 * @param oldLat
+	 * @param newLong
+	 * @param newLat
+	 */
+	public void updateUserPoint(double oldLong, double oldLat, double newLong, double newLat) {
+		if (Session.isAuthenticatedUser) {
+			container.getMapPointInfo().getValidateButton().setVisible(true);
+			for (UserPoint userPoint : authUserPoints) {
+				if ((userPoint.getLongitude().doubleValue() == oldLong)
+						&& (userPoint.getLatitude().doubleValue() == oldLat)) {
+					userPoint.setLongitude(new Double(newLong));
+					userPoint.setLatitude(new Double(newLat));
 					break;
 				}
 			}
@@ -108,12 +139,15 @@ public class MapContainer extends Composite {
 		if (Session.isAuthenticatedUser) {
 			String userLogin = Session.authenticatedUser.getLogin();
 			authenticationService.updateUserPoints(userLogin, authUserPoints, new AsyncCallback<Void>() {
-				
+
 				@Override
 				public void onSuccess(Void result) {
-					Window.alert("points updated");
+					Session.authenticatedUser.getUserPoints().clear();
+					Session.authenticatedUser.getUserPoints().addAll(authUserPoints);
+					eventBus.fireEvent(new UserPointsModifiedEvent());
+					container.getMapPointInfo().getValidateButton().setVisible(false);
 				}
-				
+
 				@Override
 				public void onFailure(Throwable caught) {
 					Window.alert("Problem : " + caught.toString());
@@ -168,7 +202,7 @@ public class MapContainer extends Composite {
 
 			@Override
 			public void onDoubleClick(MapDoubleClickEvent event) {
-				map.addOverlay(new Marker(event.getLatLng()));
+				map.addOverlay(prepareMarker(event.getLatLng()));
 				addUserPoint(event.getLatLng().getLongitude(), event.getLatLng().getLatitude());
 			}
 
@@ -222,10 +256,54 @@ public class MapContainer extends Composite {
 			if (null != authenticatedUser) {
 				for (UserPoint userPoint : authenticatedUser.getUserPoints()) {
 					LatLng latLng = LatLng.newInstance(userPoint.getLatitude(), userPoint.getLongitude());
-					map.addOverlay(new Marker(latLng));
+					map.addOverlay(prepareMarker(latLng));
 				}
 			}
 		}
+	}
+
+	/**
+	 * Method allowing to prepare a map marker
+	 * 
+	 * @param latLng
+	 * @return
+	 */
+	private Marker prepareMarker(LatLng latLng) {
+		MarkerOptions markerOptions = MarkerOptions.newInstance();
+		markerOptions.setDraggable(true);
+		Marker marker = new Marker(latLng, markerOptions);
+
+		// Add a drag handler to display the dragged marker attributes on the
+		// mapPointInfo widget (When dragged)
+		marker.addMarkerDragHandler(new MarkerDragHandler() {
+
+			@Override
+			public void onDrag(MarkerDragEvent event) {
+				container.getMapPointInfo().updateInfo(event.getSender().getLatLng());
+
+			}
+		});
+
+		// Add a drag start handler to remeber the old marker position
+		marker.addMarkerDragStartHandler(new MarkerDragStartHandler() {
+
+			@Override
+			public void onDragStart(MarkerDragStartEvent event) {
+				draggedMarker = new Marker(event.getSender().getLatLng());
+			}
+		});
+
+		// Add a drag end handler to update the user points after the marker was
+		// dragged
+		marker.addMarkerDragEndHandler(new MarkerDragEndHandler() {
+
+			@Override
+			public void onDragEnd(MarkerDragEndEvent event) {
+				updateUserPoint(draggedMarker.getLatLng().getLongitude(), draggedMarker.getLatLng().getLatitude(),
+						event.getSender().getLatLng().getLongitude(), event.getSender().getLatLng().getLatitude());
+			}
+		});
+		return marker;
 	}
 
 	public MapWidget getMap() {
