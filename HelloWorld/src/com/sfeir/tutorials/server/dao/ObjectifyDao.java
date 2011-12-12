@@ -82,6 +82,11 @@ public class ObjectifyDao<T> extends DAOBase {
 		T obj = ofy().get(this.clazz, id);
 		return obj;
 	}
+	
+	public List<T> getAll() {
+		Query<T> q = ofy().query(clazz);
+		return q.list();
+	}
 
 	/**
 	 * @param propName

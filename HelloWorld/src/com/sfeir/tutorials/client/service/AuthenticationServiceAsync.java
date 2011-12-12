@@ -14,4 +14,8 @@ public interface AuthenticationServiceAsync {
 
 	void updateUserPoints(String userLogin, List<UserPoint> userPoints, AsyncCallback<Void> callback);
 
+	void getUsers(AsyncCallback<List<User>> callback);
+
+	void updateUser(User user, AsyncCallback<Void> callback);
+
 }

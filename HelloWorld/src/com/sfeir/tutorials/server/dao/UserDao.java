@@ -51,12 +51,9 @@ public class UserDao extends ObjectifyDao<User> {
 	 */
 	public void updateUserPoints(String login, List<UserPoint> userPoints) {
 		UserPointDao userPointDao = new UserPointDao();
-
-		// delete all the old user point
-		// TODO add a method returning a unique result
-		List<User> users = listByProperty("login", login);
-		if (users.size() == 1) {
-			User user = users.get(0);
+		User user = getByProperty("login", login);
+		if (null != user) {
+			// delete all the old user points
 			userPointDao.delete(ofy().query(UserPoint.class).filter("user", user).list());
 			
 			// insert the updated user points

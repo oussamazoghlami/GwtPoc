@@ -35,6 +35,7 @@ public class PrincipalePage extends Composite implements ValueChangeHandler<Stri
 	private Map map;
 	private Login login;
 	private Welcome welcome;
+	private ManageUsers manageUsers;
 	private Inscription inscription;
 
 	@UiField
@@ -66,6 +67,7 @@ public class PrincipalePage extends Composite implements ValueChangeHandler<Stri
 	private void initializePageComponents() {
 		login = new Login(eventBus);
 		userPointGrid = new UserPointGrid(eventBus);
+		manageUsers = new ManageUsers();
 		map = new Map(eventBus);
 		welcome = new Welcome();
 		inscription = new Inscription(eventBus);
@@ -105,6 +107,11 @@ public class PrincipalePage extends Composite implements ValueChangeHandler<Stri
 				rightPart.clear();
 				rightPart.add(inscription);
 			}
+			
+			else if (token.equals("manageUsers")) {
+				rightPart.clear();
+				rightPart.add(manageUsers);
+			}
 		}
 	}
 	
@@ -120,6 +127,7 @@ public class PrincipalePage extends Composite implements ValueChangeHandler<Stri
 			public void onNewUserAuthenticated(NewUserAuthenticatedEvent newUserAuthenticatedEvent) {
 				History.newItem("maps");
 			}
+			
 		});
 		
 		// listen to UserDisconnectedEvent

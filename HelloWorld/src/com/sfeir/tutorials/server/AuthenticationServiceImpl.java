@@ -28,8 +28,22 @@ public class AuthenticationServiceImpl extends RemoteServiceServlet implements A
 		new UserDao().add(user);
 	}
 	
+	@Override
 	public void updateUserPoints(String userLogin, List<UserPoint> userPoints) {
 		new UserDao().updateUserPoints(userLogin, userPoints);
 	}
+
+	@Override
+	public List<User> getUsers() {
+		return new UserDao().getAll();
+	}
+
+	@Override
+	public void updateUser(User user) {
+		new UserDao().add(user);
+		
+	}
+	
+	
 
 }

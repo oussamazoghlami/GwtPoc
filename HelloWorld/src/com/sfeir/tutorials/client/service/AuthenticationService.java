@@ -41,4 +41,18 @@ public interface AuthenticationService extends RemoteService {
 	 */
 	public void updateUserPoints(String userLogin, List<UserPoint> userPoints);
 
+	/**
+	 * Method allowing to get all the subscribed users
+	 * 
+	 * @return
+	 */
+	public List<User> getUsers();
+
+	/**
+	 * Method allowing to update a given user
+	 * 
+	 * @param user
+	 */
+	public void updateUser(User user);
+
 }

@@ -1,13 +1,28 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:com.sfeir.tutorials.client.uibinder"
+	xmlns:w="urn:import:com.sfeir.tutorials.client.widget">
 	<ui:style>
+		.scrollable {
+			height: 460px;
+			width: 300px;
+			border: 1px solid #ccc;
+			text-align: left;
+		}
+		
 		.important {
 			font-weight: bold;
 		}
+		
+		.contactFormCell {
+			padding-left: 20px;
+		}
 	</ui:style>
+
 	<g:HTMLPanel>
-		Hello,
-		<g:Button styleName="{style.important}" ui:field="button" />
+		<g:HorizontalPanel>
+			<w:UserPanel addStyleNames="{style.scrollable}" ui:field="userPanel" />
+			<m:UserInfo ui:field="userInfo" />
+		</g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
