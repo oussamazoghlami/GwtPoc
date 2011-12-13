@@ -188,7 +188,7 @@
 				</div>
 
 				<div class="{style.pages}">
-					<a href="#inscription" class="{style.element}">
+					<a href="#!inscription" class="{style.element}">
 						Creer un nouveau compte ?
 					</a>
 				</div>

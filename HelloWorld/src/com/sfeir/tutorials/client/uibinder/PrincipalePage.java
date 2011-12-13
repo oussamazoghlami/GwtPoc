@@ -78,7 +78,7 @@ public class PrincipalePage extends Composite implements ValueChangeHandler<Stri
 	 */
 	private void initHistoryToken() {
 		if ("".equals(History.getToken())) {
-			History.newItem("welcome");
+			History.newItem("!welcome");
 		} else {
 			History.fireCurrentHistoryState();
 		}
@@ -88,33 +88,33 @@ public class PrincipalePage extends Composite implements ValueChangeHandler<Stri
 	public void onValueChange(ValueChangeEvent<String> event) {
 		String token = event.getValue();
 		if (token != null) {
-			if (token.equals("maps")) {
+			if (token.equals("!maps")) {
 				rightPart.clear();
 				rightPart.add(map);
 			}
 
-			else if (token.equals("grid")) {
+			else if (token.equals("!grid")) {
 				rightPart.clear();
 				rightPart.add(userPointGrid);
 			}
 
-			else if (token.equals("welcome")) {
+			else if (token.equals("!welcome")) {
 				rightPart.clear();
 				rightPart.add(welcome);
 			}
-			
-			else if (token.equals("inscription")) {
+
+			else if (token.equals("!inscription")) {
 				rightPart.clear();
 				rightPart.add(inscription);
 			}
-			
-			else if (token.equals("manageUsers")) {
+
+			else if (token.equals("!manageUsers")) {
 				rightPart.clear();
 				rightPart.add(manageUsers);
 			}
 		}
 	}
-	
+
 	/**
 	 * Method allowing to initialize the events to listen by the principal
 	 * Widget
@@ -125,22 +125,22 @@ public class PrincipalePage extends Composite implements ValueChangeHandler<Stri
 
 			@Override
 			public void onNewUserAuthenticated(NewUserAuthenticatedEvent newUserAuthenticatedEvent) {
-				History.newItem("maps");
+				History.newItem("!maps");
 			}
-			
+
 		});
-		
+
 		// listen to UserDisconnectedEvent
 		eventBus.addHandler(UserDisconnectedEvent.TYPE, new UserDisconnectedEventHandler() {
 
 			@Override
 			public void onUserDisconnected(UserDisconnectedEvent userDisconnectedEvent) {
-				History.newItem("welcome");
+				History.newItem("!welcome");
 			}
 
 		});
 	}
-	
+
 	public void setEventBus(HandlerManager eventBus) {
 		this.eventBus = eventBus;
 	}

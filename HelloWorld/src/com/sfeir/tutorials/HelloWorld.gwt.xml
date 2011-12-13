@@ -2,22 +2,22 @@
 <module rename-to='helloworld'>
 	<!-- Inherit the core Web Toolkit stuff. -->
 	<inherits name='com.google.gwt.user.User' />
-	
+
 	<!-- Ui Binder module -->
 	<inherits name='com.google.gwt.uibinder.UiBinder' />
-	
+
 	<!-- Objectify module -->
 	<inherits name="com.googlecode.objectify.Objectify" />
-	
+
 	<!-- Google Maps module -->
 	<inherits name='com.google.gwt.maps.GoogleMaps' />
-	
+
 	<!-- Validation Library -->
-	<inherits name="eu.maydu.gwt.validation.ValidationLibrary"/>
-	
+	<inherits name="eu.maydu.gwt.validation.ValidationLibrary" />
+
 	<!-- I18N Module -->
-	<inherits name="com.google.gwt.i18n.I18N"/>
-	
+	<inherits name="com.google.gwt.i18n.I18N" />
+
 	<inherits name='com.google.gwt.user.cellview.CellView' />
 
 	<!-- Inherit the default GWT style sheet. You can change -->
@@ -33,5 +33,5 @@
 	<!-- Specify the paths for translatable code -->
 	<source path='client' />
 	<source path='shared' />
-
+	
 </module>

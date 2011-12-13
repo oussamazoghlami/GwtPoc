@@ -4,21 +4,33 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-  
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>authenticationServiceServlet</servlet-name>
-    <servlet-class>com.sfeir.tutorials.server.AuthenticationServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>authenticationServiceServlet</servlet-name>
-    <url-pattern>/helloworld/authenticationService</url-pattern>
-  </servlet-mapping>
-  
-  <!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>HelloWorld.html</welcome-file>
-  </welcome-file-list>
+
+	<!-- Crawling filter : detects the search engine request and render the 
+		HTML associated to their requests -->
+	<filter>
+		<filter-name>crawlerFilter</filter-name>
+		<filter-class>com.sfeir.tutorials.server.filter.CrawlerFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>crawlerFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>authenticationServiceServlet</servlet-name>
+		<servlet-class>com.sfeir.tutorials.server.AuthenticationServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>authenticationServiceServlet</servlet-name>
+		<url-pattern>/helloworld/authenticationService</url-pattern>
+	</servlet-mapping>
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>HelloWorld.html</welcome-file>
+	</welcome-file-list>
 
 </web-app>

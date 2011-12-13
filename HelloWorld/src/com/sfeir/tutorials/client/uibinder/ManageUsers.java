@@ -25,7 +25,8 @@ import com.sfeir.tutorials.shared.User;
  * update user informations
  * 
  * @author Oussama Zoghlami
- * @date 08/12/2011 TODO install the event bus to update the user cell when a
+ * @date 08/12/2011 
+ * TODO install the event bus to update the user cell when a
  *       new user is subscribed
  * 
  */
