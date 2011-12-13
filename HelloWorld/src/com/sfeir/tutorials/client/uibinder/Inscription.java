@@ -23,6 +23,8 @@ import com.google.gwt.user.datepicker.client.DateBox;
 import com.sfeir.tutorials.client.event.NewUserAuthenticatedEvent;
 import com.sfeir.tutorials.client.event.NewUserAuthenticatedEventHandler;
 import com.sfeir.tutorials.client.event.NewUserCreatedEvent;
+import com.sfeir.tutorials.client.i18n.HelloWorldConstants;
+import com.sfeir.tutorials.client.i18n.HelloWorldMessages;
 import com.sfeir.tutorials.client.service.AuthenticationService;
 import com.sfeir.tutorials.client.service.AuthenticationServiceAsync;
 import com.sfeir.tutorials.shared.User;
@@ -35,7 +37,7 @@ import eu.maydu.gwt.validation.client.validators.strings.StringLengthValidator;
 
 /**
  * This is the Inscription widget, allowing to subscribe a new user on the
- * system TODO thinking about adding the i18n
+ * system
  * 
  * @author Oussama Zoghlami
  * 
@@ -43,6 +45,8 @@ import eu.maydu.gwt.validation.client.validators.strings.StringLengthValidator;
 public class Inscription extends Composite {
 
 	private static InscriptionUiBinder uiBinder = GWT.create(InscriptionUiBinder.class);
+	private HelloWorldConstants constants = GWT.create(HelloWorldConstants.class);
+	private HelloWorldMessages messages = GWT.create(HelloWorldMessages.class);
 
 	/**
 	 * Class constants
@@ -158,30 +162,34 @@ public class Inscription extends Composite {
 
 		// Add the mail validation
 		validator.addValidators(EMAIL_VALIDATOR, new EmailValidator(emailTextBox));
-		initFieldValidation(emailTextBox, EMAIL_VALIDATOR, emailDiv, emailLabel, "Email invalide !");
+		initFieldValidation(emailTextBox, EMAIL_VALIDATOR, emailDiv, emailLabel,
+				messages.invalidSymbol(constants.email()));
 		// TODO check if the specified login is available (make an RPC call)
 
 		// Add the login validation
 		validator.addValidators(LOGIN_VALIDATOR, new StringLengthValidator(loginTextBox, 1, 25));
-		initFieldValidation(loginTextBox, LOGIN_VALIDATOR, loginDiv, loginLabel, "Login invalide !");
+		initFieldValidation(loginTextBox, LOGIN_VALIDATOR, loginDiv, loginLabel,
+				messages.invalidSymbol(constants.login()));
 
 		// Add the name validation
 		validator.addValidators(NAME_VALIDATOR, new StringLengthValidator(nameTextBox, 1, 25));
-		initFieldValidation(nameTextBox, NAME_VALIDATOR, nameDiv, nameLabel, "Nom invalide !");
+		initFieldValidation(nameTextBox, NAME_VALIDATOR, nameDiv, nameLabel, messages.invalidSymbol(constants.name()));
 
 		// Add the surname validation
 		validator.addValidators(SURNAME_VALIDATOR, new StringLengthValidator(surnameTextBox, 1, 25));
-		initFieldValidation(surnameTextBox, SURNAME_VALIDATOR, surnameDiv, surnameLabel, "Prenom invalide !");
+		initFieldValidation(surnameTextBox, SURNAME_VALIDATOR, surnameDiv, surnameLabel,
+				messages.invalidSymbol(constants.surname()));
 
 		// Add the password validation
 		validator.addValidators(PASSWORD_VALIDATOR, new StringLengthValidator(passwordTextBox, 8, 30));
-		initFieldValidation(passwordTextBox, PASSWORD_VALIDATOR, passwordDiv, passwordLabel, "Mot de passe invalide !");
+		initFieldValidation(passwordTextBox, PASSWORD_VALIDATOR, passwordDiv, passwordLabel,
+				messages.invalidSymbol(constants.password()));
 
 		// Add the password equal validation
 		validator.addValidators(EQUAL_PASSWORDS_VALIDATOR, new StringEqualsValidator(passwordTextBox,
 				repeatPasswordTextBox));
 		initFieldValidation(repeatPasswordTextBox, EQUAL_PASSWORDS_VALIDATOR, repeatPasswordDiv, repeatPasswordLabel,
-				"Les mots de passes ne sont pas identiques !");
+				constants.passwordsNotSame());
 
 	}
 

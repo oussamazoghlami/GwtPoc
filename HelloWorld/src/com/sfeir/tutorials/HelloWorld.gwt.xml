@@ -17,7 +17,7 @@
 
 	<!-- I18N Module -->
 	<inherits name="com.google.gwt.i18n.I18N" />
-
+	
 	<inherits name='com.google.gwt.user.cellview.CellView' />
 
 	<!-- Inherit the default GWT style sheet. You can change -->
@@ -33,5 +33,8 @@
 	<!-- Specify the paths for translatable code -->
 	<source path='client' />
 	<source path='shared' />
+	
+	<!-- Define the supported languages -->
+	<extend-property name="locale" values="fr"/>
 	
 </module>

@@ -12,14 +12,12 @@ import com.sfeir.tutorials.client.uibinder.PrincipalePage;
  * 
  */
 public class HelloWorld implements EntryPoint {
-
+	
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
 		HandlerManager eventBus = new HandlerManager(null);
-		// AppController appController = new AppController(eventBus);
-		// appController.go(RootPanel.get("helloWorld"));
 		RootPanel.get("helloWorld").add(new PrincipalePage(eventBus));
 	}
 
