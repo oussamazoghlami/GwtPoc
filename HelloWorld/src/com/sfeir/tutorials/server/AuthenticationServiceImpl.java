@@ -1,6 +1,7 @@
 package com.sfeir.tutorials.server;
 
 import java.util.List;
+import java.util.Map;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.sfeir.tutorials.client.service.AuthenticationService;
@@ -42,6 +43,10 @@ public class AuthenticationServiceImpl extends RemoteServiceServlet implements A
 	public void updateUser(User user) {
 		new UserDao().add(user);
 		
+	}
+	
+	public Map<String, Integer> getUserPoints() {
+		return new UserDao().getUserPoints();
 	}
 	
 	

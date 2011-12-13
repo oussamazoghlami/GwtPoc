@@ -1,6 +1,7 @@
 package com.sfeir.tutorials.client.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.sfeir.tutorials.shared.User;
@@ -17,5 +18,7 @@ public interface AuthenticationServiceAsync {
 	void getUsers(AsyncCallback<List<User>> callback);
 
 	void updateUser(User user, AsyncCallback<Void> callback);
+
+	void getUserPoints(AsyncCallback<Map<String, Integer>> callback);
 
 }

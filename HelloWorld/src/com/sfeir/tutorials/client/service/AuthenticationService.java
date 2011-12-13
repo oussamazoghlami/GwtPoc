@@ -1,6 +1,7 @@
 package com.sfeir.tutorials.client.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -54,5 +55,14 @@ public interface AuthenticationService extends RemoteService {
 	 * @param user
 	 */
 	public void updateUser(User user);
+
+	/**
+	 * Method allowing to return the number of points associated to each user.
+	 * (This method is used in the statistic module)
+	 * 
+	 * @return Map<String, Integer>: Key: FullName of the user, Integer: The
+	 *         user points number
+	 */
+	public Map<String, Integer> getUserPoints();
 
 }

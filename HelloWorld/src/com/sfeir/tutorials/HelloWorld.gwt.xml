@@ -11,6 +11,9 @@
 
 	<!-- Google Maps module -->
 	<inherits name='com.google.gwt.maps.GoogleMaps' />
+	
+	<!-- Visualization Module: Google Charts -->
+	<inherits name='com.google.gwt.visualization.Visualization' />
 
 	<!-- Validation Library -->
 	<inherits name="eu.maydu.gwt.validation.ValidationLibrary" />

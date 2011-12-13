@@ -106,7 +106,11 @@ public class User implements Serializable {
 	public Date getBirthday() {
 		return birthday;
 	}
-	
+
+	public String getFullName() {
+		return name + " " + surname;
+	}
+
 	@Override
 	public String toString() {
 		return name + " " + surname;

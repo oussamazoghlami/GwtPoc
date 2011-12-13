@@ -1,6 +1,8 @@
 package com.sfeir.tutorials.server.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.ObjectifyService;
@@ -63,6 +65,16 @@ public class UserDao extends ObjectifyDao<User> {
 			}
 		}
 
+	}
+	
+	public Map<String, Integer> getUserPoints() {
+		Map<String, Integer> result = new HashMap<String, Integer>();
+		List<User> users = getAll();
+		for (User user: users) {
+			int userPoint = ofy().query(UserPoint.class).filter("user", user).list().size();
+			result.put(user.getFullName(), userPoint);
+		}
+		return result;
 	}
 
 }

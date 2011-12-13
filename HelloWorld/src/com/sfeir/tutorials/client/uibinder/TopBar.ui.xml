@@ -19,7 +19,7 @@
 	              <a class="dropdown-toggle" href="#">Administration</a>
 	              <ul class="dropdown-menu">
 	                <li><a href="#!manageUsers">Gestion des utilisateurs</a></li>
-	                <li><a href="#!manageAdmin">Recherche</a></li>
+	                <li><a href="#!statistique">Statistiques</a></li>
 	                <li class="divider"></li>
 	                <li><a href="#">Another link</a></li>
 	              </ul>

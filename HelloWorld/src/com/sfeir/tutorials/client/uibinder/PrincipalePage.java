@@ -14,6 +14,7 @@ import com.sfeir.tutorials.client.event.NewUserAuthenticatedEvent;
 import com.sfeir.tutorials.client.event.NewUserAuthenticatedEventHandler;
 import com.sfeir.tutorials.client.event.UserDisconnectedEvent;
 import com.sfeir.tutorials.client.event.UserDisconnectedEventHandler;
+import com.sfeir.tutorials.client.widget.PieContainer;
 
 /**
  * This is the template of our application pages. It contain a header, footer
@@ -111,6 +112,11 @@ public class PrincipalePage extends Composite implements ValueChangeHandler<Stri
 			else if (token.equals("!manageUsers")) {
 				rightPart.clear();
 				rightPart.add(manageUsers);
+			}
+			
+			else if (token.equals("!statistique")) {
+				rightPart.clear();
+				rightPart.add(new PieContainer());
 			}
 		}
 	}
